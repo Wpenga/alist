@@ -62,7 +62,7 @@ func Down(c *gin.Context) {
 		downloadUrl,exist:=conf.Cache.Get(cacheKey)
 		if exist {
 			log.Debugf("使用了缓存:%s",cacheKey)
-			message := "<script>location.href='" + downloadUrl.(string) + "';</script>"
+			message := "<html><script>location.href='" + downloadUrl.(string) + "';</script></html>"
 			c.String(http.StatusOK, message)
 			return
 		}
@@ -75,7 +75,7 @@ func Down(c *gin.Context) {
 	if conf.Conf.Cache.Enable {
 		conf.Cache.Set(cacheKey,file.Url,cache.DefaultExpiration)
 	}
-	message := "<script>location.href='" + file.Url + "';</script>"
+	message := "<html><script>location.href='" + file.Url + "';</script></html>"
 	c.String(http.StatusOK, message)
 	return
 }
