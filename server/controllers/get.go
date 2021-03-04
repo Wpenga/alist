@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/Xhofe/alist/alidrive"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"fmt"
 	"github.com/Xhofe/alist/conf"
 	"github.com/patrickmn/go-cache"
