@@ -63,7 +63,7 @@ func Down(c *gin.Context) {
 		if exist {
 			log.Debugf("使用了缓存:%s",cacheKey)
 			c.Header("Content-Type","text/html; charset=utf-8")
-			message := "<!DOCTYPE html><html><script>location.href='" + downloadUrl.(string) + "';</script></html>"
+			message := "<!DOCTYPE html><html><meta name='referrer' content='never'><script>location.href='" + downloadUrl.(string) + "';</script></html>"
 			c.String(http.StatusOK, message)
 			return
 		}
@@ -76,7 +76,7 @@ func Down(c *gin.Context) {
 	if conf.Conf.Cache.Enable {
 		conf.Cache.Set(cacheKey,file.Url,cache.DefaultExpiration)
 	}
-	message := "<!DOCTYPE html><html><script>location.href='" + file.Url + "';</script></html>"
+	message := "<!DOCTYPE html><html><meta name='referrer' content='never'><script>location.href='" + file.Url + "';</script></html>"
 	c.Header("Content-Type","text/html; charset=utf-8")
 	c.String(http.StatusOK, message)
 	return
