@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/Xhofe/alist/alidrive"
 	"github.com/gin-gonic/gin"
+	"fmt"
 	"github.com/Xhofe/alist/conf"
 	"github.com/patrickmn/go-cache"
 	log "github.com/sirupsen/logrus"
@@ -70,7 +71,7 @@ func Down(c *gin.Context) {
 		return
 	}
 	if conf.Conf.Cache.Enable {
-		conf.Cache.Set(cacheKey,file.DownloadUrl,cache.DefaultExpiration)
+		conf.Cache.Set(cacheKey,file.Url,cache.DefaultExpiration)
 	}
 	c.Redirect(301,file.Url)
 	return
