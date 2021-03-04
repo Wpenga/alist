@@ -3,6 +3,8 @@ package controllers
 import (
 	"github.com/Xhofe/alist/alidrive"
 	"github.com/gin-gonic/gin"
+	"github.com/Xhofe/alist/conf"
+	"github.com/patrickmn/go-cache"
 	log "github.com/sirupsen/logrus"
 	"strings"
 )
